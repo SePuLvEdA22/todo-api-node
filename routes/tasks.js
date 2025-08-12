@@ -29,11 +29,11 @@ router.get('/', (req, res) => {
 router.get('/:completed', (req, res) => {
   const { completed } = req.params
 
+  // String to boolean
   const isCompleted = completed === 'true'
 
-  // find() devuelve solo el primer elemento que coincida
-  // Necesitas filter() para obtener todas las tareas que coincidan
-
+  // find() -> return only the first matching element
+  // filter() -> return all the matching tasks
   const filteredTasks = tasks.filter(t => t.completed === isCompleted)
   if (filteredTasks.length === 0) {
     return res.status(404).json({ error: 'Not found' })
